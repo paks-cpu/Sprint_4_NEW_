@@ -1,6 +1,6 @@
-package Tests;
+package tests;
 
-import Packages.OrderPageScooter;
+import packages.OrderPageScooter;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;

@@ -1,4 +1,4 @@
-package Packages;
+package packages;
 
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.core.StringContains;
