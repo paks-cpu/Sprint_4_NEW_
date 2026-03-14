@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class OrderPageScooter {
-    private WebDriver driver;
+    private final WebDriver driver;
 
     public OrderPageScooter(WebDriver driver) {
         this.driver = driver;
@@ -51,7 +51,7 @@ public class OrderPageScooter {
     private final By orderModal = By.className("Order_ModalHeader__3FDaJ");
 
     //Метод подтверждения куки
-    public void setAcceptCoocieButton() {
+    public void setAcceptCookieButton() {
         driver.findElement(acceptCoocieButton).click();
     }
     //Метод заполнениия поля имя

@@ -1,21 +1,12 @@
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import java.time.Duration;
+import baseTest.BaseTest;
+
 
 
 @RunWith(Parameterized.class)
-public class OrderCreateTest {
-    private WebDriver driver;
+public class OrderCreateTest extends BaseTest {
     private final String site = "https://qa-scooter.praktikum-services.ru/";
     private String name;
     private String surname;
@@ -27,10 +18,6 @@ public class OrderCreateTest {
     private String comment;
     private String subway;
 
-    private void waitLoadAfterClickQuestion(By labelResult){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(labelResult));
-    }
 
     public OrderCreateTest(String name, String surname, String addressFrom, String subway, String phoneNumber,String dateDelivery, String rentalPeriod, String colorScooter, String comment) {
         this.name = name;
@@ -52,20 +39,11 @@ public class OrderCreateTest {
         };
     }
 
-    @Before
-    public void setUp() {
-        WebDriverManager.firefoxdriver().setup();
-        driver = new FirefoxDriver();
-        /* WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver(); */
-        driver.get(site);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
-    }
 
     @Test
-    public void OrderPositiveTestTop () {
+    public void orderPositiveTestTop () {
         OrderPageScooter objOrderPageScooter = new OrderPageScooter(driver);
-        objOrderPageScooter.setAcceptCoocieButton();
+        objOrderPageScooter.setAcceptCookieButton();
         objOrderPageScooter.clickButtonOrderTop();
         objOrderPageScooter.setName(name);
         objOrderPageScooter.setSurname(surname);
@@ -82,8 +60,4 @@ public class OrderCreateTest {
         objOrderPageScooter.displayOrderModal();
     }
 
-   @After
-   public void quit() {
-        driver.quit();
-   }
 }
