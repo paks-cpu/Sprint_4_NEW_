@@ -27,6 +27,8 @@ public class BaseTest {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
+        getSiteScooter();
+        implicitlyWait();
     } */
 
     public void getSiteScooter() {
