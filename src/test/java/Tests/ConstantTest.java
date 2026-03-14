@@ -1,3 +1,6 @@
+package Tests;
+
+import Packages.DescriptionQuestionsPage;
 import baseTest.BaseTest;
 import constantForQuestion.Constant;
 import org.junit.Test;

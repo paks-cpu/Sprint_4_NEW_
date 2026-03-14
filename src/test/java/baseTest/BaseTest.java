@@ -35,8 +35,8 @@ public class BaseTest {
     }
 
     public void implicitlyWait() {
-        //Ожидание загрузки страницы (максимум 60 сек)
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
+        //Ожидание загрузки страницы
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
     }
 
     @After
