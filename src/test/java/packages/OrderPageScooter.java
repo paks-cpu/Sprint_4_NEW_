@@ -3,6 +3,7 @@ package packages;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.core.StringContains;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -38,7 +39,7 @@ public class OrderPageScooter {
     //Верхняя кнопка "Заказать"
     private final By buttonTopOrder = By.className("Button_Button__ra12g");
     //Нижняя кнопка "Заказать"
-    private final By buttonBotOrder = By.className("Button_Button__ra12gButton_UltraBig__UU3Lp");
+    private final By buttonBotOrder = By.className("Button_UltraBig__UU3Lp");
     //Кнопка "Заказать" финальная(в конце оформления заказа)
     private final By buttonFinishOrder = By.xpath("//div[contains(@class,'Order_Buttons')]/button[text()='Заказать']");
     //Кнопка "Да" на модальном окне "Хотите оформить заказ?"
@@ -122,7 +123,13 @@ public class OrderPageScooter {
     //Метод проверки появления модального окна "Заказ оформлен"
     public void displayOrderModal() {
         String actual = driver.findElement(orderModal).getText().trim();
-        MatcherAssert.assertThat(actual, StringContains.containsString("Заказ оформлен"));
+        MatcherAssert.assertThat(actual, StringContains.containsString("Заказ оформлен"));}
+    public void clickButtonBotOrder() {
+        driver.findElement(buttonBotOrder).click();
+    }
+    public void scrollToButtonBotOrder() {
+        WebElement element = driver.findElement(buttonBotOrder);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
     }
 
 }

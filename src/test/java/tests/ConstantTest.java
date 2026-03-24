@@ -6,44 +6,37 @@ import constantForQuestion.Constant;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.openqa.selenium.By;
 
 @RunWith(Parameterized.class)
 public class ConstantTest extends BaseTest {
-    private final By questions;
-    private final By answer;
-    private final By labelResult;
-    private final String expected;
+    private final int questionIndex;
+    private final String expectedAnswer;
 
-    public ConstantTest(By questions, By answer, By labelResult, String expected) {
-        this.questions = questions;
-        this.answer = answer;
-        this.labelResult = labelResult;
-        this.expected = expected;
+    public ConstantTest(int questionIndex, String expectedAnswer) {
+        this.questionIndex = questionIndex;
+        this.expectedAnswer = expectedAnswer;
     }
 
     @Parameterized.Parameters
     public static Object[][] getParameters() {
         return new Object[][]{
-                {DescriptionQuestionsPage.dropDownQuestionPayments, DescriptionQuestionsPage.dropDownAnswerPayments, DescriptionQuestionsPage.dropDownItemAnswerPayments, Constant.dropDownListAnswerPayments},
-                {DescriptionQuestionsPage.dropDownQuestionHowManyScooters, DescriptionQuestionsPage.dropDownAnswerHowManyScooters, DescriptionQuestionsPage.dropDownItemHowManyScooters, Constant.dropDownListAnswerHowManyScooters},
-                {DescriptionQuestionsPage.dropDownQuestionRentalTime, DescriptionQuestionsPage.dropDownAnswerRentalTime, DescriptionQuestionsPage.dropDownItemRentalTime, Constant.dropDownListAnswerRentalTime},
-                {DescriptionQuestionsPage.dropDownQuestionOrderForToday, DescriptionQuestionsPage.dropDownAnswerOrderForToday, DescriptionQuestionsPage.dropDownItemOrderForToday, Constant.dropDownListAnswerOrderForToday},
-                {DescriptionQuestionsPage.dropDownQuestionOrderExtension, DescriptionQuestionsPage.dropDownAnswerOrderExtension, DescriptionQuestionsPage.dropDownItemOrderExtension, Constant.dropDownListAnswerOrderExtension},
-                {DescriptionQuestionsPage.dropDownQuestionChargingLevel, DescriptionQuestionsPage.dropDownAnswerChargingLevel, DescriptionQuestionsPage.dropDownItemChargingLevel, Constant.dropDownListAnswerChargingLevel},
-                {DescriptionQuestionsPage.dropDownQuestionOrderCancellation, DescriptionQuestionsPage.dropDownAnswerOrderCancellation, DescriptionQuestionsPage.dropDownItemOrderCancellation, Constant.dropDownListAnswerOrderCancellation},
-                {DescriptionQuestionsPage.dropDownQuestionBeyondTheMkad, DescriptionQuestionsPage.dropDownAnswerBeyondTheMkad, DescriptionQuestionsPage.dropDownItemBeyondTheMkad, Constant.dropDownListAnswerBeyondTheMkad},
+                {0, Constant.DROP_DOWN_LIST_ANSWER_PAYMENTS},
+                {1, Constant.DROP_DOWN_LIST_ANSWER_HOW_MANY_SCOOTER},
+                {2, Constant.DROP_DOWN_LIST_ANSWER_RENTAL_TIME},
+                {3, Constant.DROP_DOWN_LIST_ANSWER_ORDER_FOR_TODAY},
+                {4, Constant.DROP_DOWN_LIST_ANSWER_ORDER_EXTENSION},
+                {5, Constant.DROP_DOWN_LIST_ANSWER_CHARGING_LEVEL},
+                {6, Constant.DROP_DOWN_LIST_ANSWER_ORDER_CANCELLATION},
+                {7, Constant.DROP_DOWN_LIST_ANSWER_BEYOND_THE_MKAD}
         };
     }
 
     @Test
     public void checkQuestions() {
-    DescriptionQuestionsPage page = new DescriptionQuestionsPage(driver, questions, answer, labelResult, expected);
-    page.findQuestion();
+    DescriptionQuestionsPage page = new DescriptionQuestionsPage(driver);
     page.scrollToQuestion();
-    page.waitForClickAndClick();
-    page.waitForAnswerToBeVisibleAndLoaded();
-    page.searchAndGetResponse();
+    page.clickToQuestion(questionIndex);
+    page.verifyAnswerText(questionIndex, expectedAnswer);
     }
 
     }

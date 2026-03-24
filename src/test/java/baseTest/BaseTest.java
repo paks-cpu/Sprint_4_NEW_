@@ -18,6 +18,7 @@ public class BaseTest {
         WebDriverManager.firefoxdriver().setup();
         driver = new FirefoxDriver();
         driver.manage().window().maximize();
+        implicitlyWait();
         getSiteScooter();
         implicitlyWait();
     }
@@ -30,6 +31,8 @@ public class BaseTest {
         getSiteScooter();
         implicitlyWait();
     } */
+
+
 
     public void getSiteScooter() {
         //Переход на сайт qa-scooter.praktikum-services.ru

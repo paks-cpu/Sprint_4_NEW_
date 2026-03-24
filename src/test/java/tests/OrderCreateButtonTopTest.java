@@ -9,7 +9,7 @@ import baseTest.BaseTest;
 
 
 @RunWith(Parameterized.class)
-public class OrderCreateTest extends BaseTest {
+public class OrderCreateButtonTopTest extends BaseTest {
     private final String site = "https://qa-scooter.praktikum-services.ru/";
     private String name;
     private String surname;
@@ -22,7 +22,7 @@ public class OrderCreateTest extends BaseTest {
     private String subway;
 
 
-    public OrderCreateTest(String name, String surname, String addressFrom, String subway, String phoneNumber,String dateDelivery, String rentalPeriod, String colorScooter, String comment) {
+    public OrderCreateButtonTopTest(String name, String surname, String addressFrom, String subway, String phoneNumber, String dateDelivery, String rentalPeriod, String colorScooter, String comment) {
         this.name = name;
         this.surname = surname;
         this.addressFrom = addressFrom;
@@ -62,5 +62,4 @@ public class OrderCreateTest extends BaseTest {
         objOrderPageScooter.clickOrderConfirmButton();
         objOrderPageScooter.displayOrderModal();
     }
-
 }
