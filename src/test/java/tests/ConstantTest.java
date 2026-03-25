@@ -2,7 +2,7 @@ package tests;
 
 import packages.DescriptionQuestionsPage;
 import baseTest.BaseTest;
-import constantForQuestion.Constant;
+import constant.question.Constant;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;

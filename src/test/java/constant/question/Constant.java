@@ -1,4 +1,4 @@
-package constantForQuestion;
+package constant.question;
 
 public class Constant {
     public static final String DROP_DOWN_LIST_ANSWER_PAYMENTS = "Сутки — 400 рублей. Оплата курьеру — наличными или картой.";
